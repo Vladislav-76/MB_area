@@ -1,0 +1,18 @@
+[project]
+name = "mb_area"
+version = "0.0.3"
+authors = [
+  { name="vladislav_gs", email="sillmaril2@gmail.com" },
+]
+description = "A small test package"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/mb_area"
+Issues = "https://github.com/pypa/mb_area/issues"

@@ -1,11 +1,12 @@
-from base import BaseFlatFigure
 from math import pi
+
+from .base import BaseFlatFigure
 
 
 class Circle(BaseFlatFigure):
     """
     Класс круга.
-    
+
     - radius: float - радиус круга, обязательный атрибут.
     """
 
@@ -21,7 +22,7 @@ class Circle(BaseFlatFigure):
 class Triangle(BaseFlatFigure):
     """
     Класс треугольника.
-    
+
     - a: float - сторона треугольника, обязательный аргумент,
     - b: float - сторона треугольника, если задается только сторона a, треугольник равносторонний,
     - c: float - сторона треугольника, если задаются только стороны a и b, треугольник равнобедренный с основанием a,
@@ -46,24 +47,9 @@ class Triangle(BaseFlatFigure):
         """Функция вычисления площади."""
 
         return (p * x) ** 0.5
-        
+
     @property
     def is_right(self) -> bool:
         """Свойство проверки прямоугольности."""
         sides = sorted((self.a, self.b, self.c))
         return sides.pop() ** 2 == sides.pop() ** 2 + sides.pop() ** 2
-
-
-
-
-cir = Circle(1)
-print(cir.area)
-print(cir.radius)
-tri = Triangle(10, 9)
-print(tri.area)
-print(tri.is_right)
-tri = Triangle(3, 4, 5)
-print(tri.area)
-print(tri.is_right)
-# Triangle(20, 4, 5)
-

@@ -1,8 +1,10 @@
-from math import pi
+import os
+import sys
 import unittest
+from math import pi
 
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../src/mb_area"))
 from figures import Circle, Triangle
-
 
 class CircleTestCase(unittest.TestCase):
     """Тест класса Circle."""
