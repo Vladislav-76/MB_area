@@ -11,7 +11,9 @@ class Circle(BaseFlatFigure):
 
     name = 'Круг'
 
-    def __init__(self, radius: float) -> None:
+    def __init__(self, radius: int | float) -> None:
+        if radius <= 0:
+            raise ValueError('Радиус круга должен быть положительным числом')
         self.radius = radius
         super().__init__(radius=radius, area_calc=lambda radius: 2 * pi * radius ** 2)
 
@@ -28,13 +30,15 @@ class Triangle(BaseFlatFigure):
 
     name = 'Треугольник'
 
-    def __init__(self, a: float, b: float | None = None, c: float | None = None) -> None:
+    def __init__(self, a: int | float, b: int | float | None = None, c: int | float | None = None) -> None:
         self.a = a
         self.b = b if b else a
         self.c = c if c else self.b
+        if self.a <= 0 or self.b <= 0 or self.c <= 0:
+            raise ValueError('Стороны треугольника должны быть положительными числами')
         p = (self.a + self.b + self.c) / 2
         if (x := (p - self.a) * (p - self.b) * (p - self.c)) < 0:
-            raise ValueError('Треугольника с такими сторонами быть не может.')
+            raise ValueError('Треугольника с такими сторонами быть не может')
         super().__init__(p=p, x=x, area_calc=self.area_calc)
 
     @staticmethod
@@ -45,6 +49,7 @@ class Triangle(BaseFlatFigure):
         
     @property
     def is_right(self) -> bool:
+        """Свойство проверки прямоугольности."""
         sides = sorted((self.a, self.b, self.c))
         return sides.pop() ** 2 == sides.pop() ** 2 + sides.pop() ** 2
 
@@ -57,8 +62,8 @@ print(cir.radius)
 tri = Triangle(10, 9)
 print(tri.area)
 print(tri.is_right)
-tri = (Triangle(3, 4, 5))
+tri = Triangle(3, 4, 5)
 print(tri.area)
 print(tri.is_right)
-Triangle(20, 4, 5)
+# Triangle(20, 4, 5)
 
